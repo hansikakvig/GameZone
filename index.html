@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GameZone Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">🎮 GameZone</div>
+
+    <div class="menu">
+        <a href="/">Dashboard</a>
+        <a href="/players">Players</a>
+        <a href="/teams">Teams</a>
+        <a href="/games">Games</a>
+        <a href="/tournaments">Tournaments</a>
+        <a href="/matches">Matches</a>
+        <a href="/leaderboard">Leaderboard</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>Gaming Tournament Management</h1>
+    <p>Manage players, teams, games and tournaments.</p>
+</section>
+
+<section class="stats">
+
+    <div class="card">
+        <h2>{{ players }}</h2>
+        <p>Players</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ teams }}</h2>
+        <p>Teams</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ games }}</h2>
+        <p>Games</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ tournaments }}</h2>
+        <p>Tournaments</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ matches }}</h2>
+        <p>Matches</p>
+    </div>
+
+</section>
+
+<section class="welcome">
+    <h2>Welcome to GameZone 🎮</h2>
+    <p>
+        A complete Gaming Tournament Management System
+        using Flask, Python and MySQL.
+    </p>
+</section>
+
+</body>
+</html>

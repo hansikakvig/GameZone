@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GameZone - Teams</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">🎮 GameZone</div>
+
+    <div class="menu">
+        <a href="/">Dashboard</a>
+        <a href="/players">Players</a>
+        <a href="/teams">Teams</a>
+        <a href="/games">Games</a>
+        <a href="/tournaments">Tournaments</a>
+        <a href="/matches">Matches</a>
+        <a href="/leaderboard">Leaderboard</a>
+    </div>
+</nav>
+
+<div class="page">
+
+<h1>Teams</h1>
+
+<div class="form-container">
+
+<h2>Add Team</h2>
+
+<form action="/add_team" method="POST">
+
+<input type="text"
+       name="team_name"
+       placeholder="Team Name"
+       required>
+
+<select name="captain_id" required>
+
+<option value="">Select Captain</option>
+
+{% for player in players %}
+
+<option value="{{ player.player_id }}">
+    {{ player.player_name }}
+</option>
+
+{% endfor %}
+
+</select>
+
+<button type="submit">Add Team</button>
+
+</form>
+
+</div>
+
+<div class="table-container">
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Team Name</th>
+<th>Captain</th>
+<th>Action</th>
+</tr>
+
+{% for team in teams %}
+
+<tr>
+
+<td>{{ team.team_id }}</td>
+
+<td>{{ team.team_name }}</td>
+
+<td>{{ team.captain or 'Not Assigned' }}</td>
+
+<td>
+<a class="delete"
+   href="/delete_team/{{ team.team_id }}"
+   onclick="return confirm('Delete this team?')">
+   Delete
+</a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+</body>
+</html>

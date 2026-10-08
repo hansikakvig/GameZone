@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GameZone - Leaderboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">🎮 GameZone</div>
+
+<div class="menu">
+
+<a href="/">Dashboard</a>
+<a href="/players">Players</a>
+<a href="/teams">Teams</a>
+<a href="/games">Games</a>
+<a href="/tournaments">Tournaments</a>
+<a href="/matches">Matches</a>
+<a href="/leaderboard">Leaderboard</a>
+
+</div>
+
+</nav>
+
+<div class="page">
+
+<h1>🏆 Leaderboard</h1>
+
+<div class="table-container">
+
+<table>
+
+<tr>
+<th>Rank</th>
+<th>Team</th>
+<th>Matches Played</th>
+<th>Total Score</th>
+</tr>
+
+{% for team in leaderboard %}
+
+<tr>
+
+<td>{{ loop.index }}</td>
+
+<td>{{ team.team_name }}</td>
+
+<td>{{ team.matches_played }}</td>
+
+<td><strong>{{ team.total_score }}</strong></td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+</body>
+</html>

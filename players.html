@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GameZone - Players</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">🎮 GameZone</div>
+
+    <div class="menu">
+        <a href="/">Dashboard</a>
+        <a href="/players">Players</a>
+        <a href="/teams">Teams</a>
+        <a href="/games">Games</a>
+        <a href="/tournaments">Tournaments</a>
+        <a href="/matches">Matches</a>
+        <a href="/leaderboard">Leaderboard</a>
+    </div>
+</nav>
+
+<div class="page">
+    <h1>Players</h1>
+
+    <div class="form-container">
+        <h2>Add Player</h2>
+
+        <form action="/add_player" method="POST">
+
+            <input type="text" name="player_name"
+                   placeholder="Player Name" required>
+
+            <input type="email" name="email"
+                   placeholder="Email" required>
+
+            <input type="number" name="age"
+                   placeholder="Age" required>
+
+            <input type="text" name="country"
+                   placeholder="Country" required>
+
+            <button type="submit">Add Player</button>
+
+        </form>
+    </div>
+
+    <div class="table-container">
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Country</th>
+                <th>Action</th>
+            </tr>
+
+            {% for player in players %}
+
+            <tr>
+                <td>{{ player.player_id }}</td>
+                <td>{{ player.player_name }}</td>
+                <td>{{ player.email }}</td>
+                <td>{{ player.age }}</td>
+                <td>{{ player.country }}</td>
+
+                <td>
+                    <a class="delete"
+                       href="/delete_player/{{ player.player_id }}"
+                       onclick="return confirm('Delete this player?')">
+                       Delete
+                    </a>
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

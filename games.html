@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GameZone - Games</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">🎮 GameZone</div>
+
+    <div class="menu">
+        <a href="/">Dashboard</a>
+        <a href="/players">Players</a>
+        <a href="/teams">Teams</a>
+        <a href="/games">Games</a>
+        <a href="/tournaments">Tournaments</a>
+        <a href="/matches">Matches</a>
+        <a href="/leaderboard">Leaderboard</a>
+    </div>
+</nav>
+
+<div class="page">
+
+<h1>Games</h1>
+
+<div class="form-container">
+
+<h2>Add Game</h2>
+
+<form action="/add_game" method="POST">
+
+<input type="text"
+       name="game_name"
+       placeholder="Game Name"
+       required>
+
+<input type="text"
+       name="game_type"
+       placeholder="Game Type"
+       required>
+
+<button type="submit">Add Game</button>
+
+</form>
+
+</div>
+
+<div class="table-container">
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Game Name</th>
+<th>Game Type</th>
+<th>Action</th>
+</tr>
+
+{% for game in games %}
+
+<tr>
+
+<td>{{ game.game_id }}</td>
+<td>{{ game.game_name }}</td>
+<td>{{ game.game_type }}</td>
+
+<td>
+<a class="delete"
+   href="/delete_game/{{ game.game_id }}"
+   onclick="return confirm('Delete this game?')">
+   Delete
+</a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+</body>
+</html>
